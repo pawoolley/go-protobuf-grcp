@@ -1,3 +1,7 @@
+####
+
+Simple Go app using protobuf and gRPC.  Client sends a message.  Server echoes is back.
+
 #### Generate code from protobuf
 
 ```bash
