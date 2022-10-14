@@ -2,6 +2,10 @@
 
 Simple Go app using protobuf and gRPC.  Client sends a message.  Server echoes is back.
 
+#### Pre reqs
+
+See [here](https://grpc.io/docs/languages/go/quickstart/#prerequisites).
+
 #### Generate code from protobuf
 
 ```bash
