@@ -2,8 +2,14 @@ syntax = "proto3";
 
 option go_package = "/pb";
 
-service HelloWorld {rpc SayHi(Request) returns (Response) {}}
+service HelloWorld {
+  rpc SayHi(Request) returns (Response) {}
+}
 
-message Request {string name = 1;}
+message Request {
+  string name = 1;
+}
 
-message Response {string message = 1;}
+message Response {
+  string message = 1;
+}
