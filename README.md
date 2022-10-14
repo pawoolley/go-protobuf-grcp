@@ -17,8 +17,10 @@ make generate
 1.
    ```bash
    go build server.go
+   ./server
    ```
 1.
    ```bash
    go build client.go
+   ./client
    ```
