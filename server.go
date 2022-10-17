@@ -1,23 +1,29 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"go-echo/generated"
 	"google.golang.org/grpc"
 	"log"
 	"net"
+	"time"
 )
 
 type helloWorldServer struct {
 	pb.UnimplementedHelloWorldServer
 }
 
-func (s *helloWorldServer) SayHi(ctx context.Context, req *pb.Request) (*pb.Response, error) {
+func (s *helloWorldServer) SayHi(req *pb.Request, server pb.HelloWorld_SayHiServer) error {
 	log.Printf("Received: %v\n", req.Name)
-	return &pb.Response{
-		Message: fmt.Sprintf("Hi, %v", req.Name),
-	}, nil
+
+	for i := 0; i < 5; i++ {
+		server.Send(&pb.Response{
+			Message: fmt.Sprintf("Hi %v", req.Name),
+		})
+		time.Sleep(time.Second)
+	}
+
+	return nil
 }
 
 func main() {
