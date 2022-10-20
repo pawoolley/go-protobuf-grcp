@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	pb "go-echo/generated"
+	"go-protobuf-grcp/protobuf"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"io"
@@ -14,10 +14,11 @@ func main() {
 	if err != nil {
 		log.Fatalf("fail to dial: %v", err)
 	}
+	//goland:noinspection GoUnhandledErrorResult
 	defer conn.Close()
-	client := pb.NewHelloWorldClient(conn)
+	client := protobuf.NewHelloWorldClient(conn)
 
-	stream, err := client.SayHi(context.Background(), &pb.Request{Name: "Paul"})
+	stream, err := client.SayHi(context.Background(), &protobuf.Request{Name: "Paul"})
 	if err != nil {
 		log.Fatalf("client.GetFeature failed: %v", err)
 	}

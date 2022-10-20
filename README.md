@@ -16,11 +16,14 @@ make generate
 
 1.
    ```bash
+   cd server
    go build server.go
    ./server
    ```
 1.
    ```bash
+   # From a separate terminal to the server
+   cd client
    go build client.go
    ./client
    ```

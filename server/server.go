@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go-echo/generated"
+	"go-protobuf-grcp/protobuf"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"log"
@@ -11,15 +11,15 @@ import (
 )
 
 type helloWorldServer struct {
-	pb.UnimplementedHelloWorldServer
+	protobuf.UnimplementedHelloWorldServer
 }
 
-func (s *helloWorldServer) SayHi(req *pb.Request, server pb.HelloWorld_SayHiServer) error {
+func (s *helloWorldServer) SayHi(req *protobuf.Request, server protobuf.HelloWorld_SayHiServer) error {
 	log.Printf("Received: %v\n", req.Name)
 
 	for i := 0; i < 5; i++ {
 		//goland:noinspection GoUnhandledErrorResult
-		server.Send(&pb.Response{
+		server.Send(&protobuf.Response{
 			Message: fmt.Sprintf("Hi, %v", req.Name),
 		})
 		time.Sleep(time.Second)
@@ -31,7 +31,7 @@ func (s *helloWorldServer) SayHi(req *pb.Request, server pb.HelloWorld_SayHiServ
 func main() {
 	lis, _ := net.Listen("tcp", "localhost:65535")
 	grpcServer := grpc.NewServer()
-	pb.RegisterHelloWorldServer(grpcServer, &helloWorldServer{})
+	protobuf.RegisterHelloWorldServer(grpcServer, &helloWorldServer{})
 	// Register reflection service on gRPC server. Without doing this, IJ's built-in HTTP client
 	// won't do GRPC requests and fails with a "Reflective gRPC call timed out" error.
 	reflection.Register(grpcServer)

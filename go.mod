@@ -1,4 +1,4 @@
-module go-echo
+module go-protobuf-grcp
 
 go 1.19
 

@@ -8,5 +8,7 @@
 /dataSources.local.xml
 /.idea/
 /*.iml
-/server
-/client
+/protobuf/HelloWorld.pb.go
+/protobuf/HelloWorld_grpc.pb.go
+/client/client
+/server/server
