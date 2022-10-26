@@ -9,21 +9,19 @@ See [here](https://grpc.io/docs/languages/go/quickstart/#prerequisites).
 #### Generate code from protobuf
 
 ```bash
-make generate
+go generate
 ```
 
 #### Running the example
 
 1.
    ```bash
-   cd server
-   go build server.go
-   ./server
+   go build -o server/server server/server.go
+   ./server/server
    ```
 1.
    ```bash
    # From a separate terminal to the server
-   cd client
-   go build client.go
-   ./client
+   go build -o client/client client/client.go
+   ./client/client
    ```
