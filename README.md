@@ -9,6 +9,7 @@ See [here](https://grpc.io/docs/languages/go/quickstart/#prerequisites).
 #### Generate code from protobuf
 
 ```bash
+# See generate.go
 go generate
 ```
 
